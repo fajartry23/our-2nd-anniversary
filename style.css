@@ -1,0 +1,333 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #43b0f1;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 15px;
+  color: #1d3557;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* BACKGROUND AWAN TOY STORY */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background-image: 
+    radial-gradient(ellipse at 50% 50%, #ffffff 0%, #ffffff 45%, transparent 46%),
+    radial-gradient(ellipse at 35% 55%, #ffffff 0%, #ffffff 35%, transparent 36%),
+    radial-gradient(ellipse at 65% 55%, #ffffff 0%, #ffffff 35%, transparent 36%),
+    radial-gradient(ellipse at 42% 65%, #ffffff 0%, #ffffff 30%, transparent 31%),
+    radial-gradient(ellipse at 58% 65%, #ffffff 0%, #ffffff 30%, transparent 31%);
+  background-size: 320px 220px;
+  background-position: 0 0;
+  opacity: 0.9;
+  z-index: -1;
+  animation: moveClouds 35s linear infinite;
+}
+
+@keyframes moveClouds {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.falling-tulip {
+  position: fixed;
+  top: -10%;
+  z-index: 1;
+  pointer-events: none;
+  animation: floatDown linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes floatDown {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
+  100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+
+.hidden { display: none !important; }
+
+.main-container {
+  width: 100%;
+  max-width: 650px;
+  z-index: 10;
+  margin: 20px auto;
+}
+
+.card-section {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(5px);
+  border-radius: 25px;
+  padding: 30px 25px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  border: 5px solid #7b2cbf;
+  outline: 4px solid #70e000;
+  animation: popIn 0.4s ease forwards;
+}
+
+.text-center { text-align: center; }
+
+.tulip-header-icon {
+  display: inline-block;
+  background: #ffe5ec;
+  padding: 12px;
+  border-radius: 50%;
+  margin-bottom: 12px;
+}
+
+.main-title { font-family: 'Caveat', cursive; font-size: 2.8rem; color: #ff4d6d; }
+.ask-title { font-family: 'Fredoka', cursive; font-size: 1.8rem; color: #d90429; margin-bottom: 12px; }
+.subtitle-intro { font-size: 0.95rem; color: #4a5568; margin-bottom: 25px; }
+
+/* =================================================== */
+/* EFEK TOMBOL "LANJUT BUKA KADO" & "BIASA AJA"       */
+/* =================================================== */
+.buttons-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  min-height: 80px;
+  margin-top: 10px;
+}
+
+.btn-yes {
+  background: #70e000;
+  color: #10002b;
+  border: 3px solid #38b000;
+  padding: 14px 32px;
+  border-radius: 25px;
+  font-family: 'Fredoka', cursive;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 0 #2a9d8f, 0 10px 15px rgba(0,0,0,0.15);
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.btn-yes:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 0 #2a9d8f, 0 12px 20px rgba(0,0,0,0.2);
+}
+
+.btn-yes:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 #2a9d8f;
+}
+
+.btn-no {
+  background: #d90429;
+  color: white;
+  border: 3px solid #9b001c;
+  padding: 14px 28px;
+  border-radius: 25px;
+  font-family: 'Fredoka', cursive;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 0 #5c0011, 0 10px 15px rgba(0,0,0,0.15);
+  transition: all 0.15s ease-out;
+  z-index: 50;
+}
+
+/* GIFTS GRID */
+.gifts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.gift-card {
+  background-color: #ffb703;
+  background-image: linear-gradient(90deg, rgba(251, 133, 0, 0.4) 50%, transparent 50%), linear-gradient(rgba(251, 133, 0, 0.4) 50%, transparent 50%);
+  background-size: 20px 20px;
+  border: 3px solid #fb8500;
+  border-radius: 18px;
+  padding: 18px 10px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.gift-card:hover { transform: translateY(-5px); }
+.gift-card.full-width-gift { grid-column: span 2; background-color: #ff758f; border-color: #ff4d6d; }
+.gift-box-icon { font-size: 2.5rem; }
+.gift-card p { font-family: 'Fredoka', cursive; font-size: 1.1rem; color: #10002b; }
+.gift-card small { font-size: 0.8rem; color: #10002b; font-weight: 700; background: rgba(255,255,255,0.9); padding: 2px 8px; border-radius: 8px; }
+
+/* REASON DISPLAY BOX */
+.reason-display-box {
+  background: #fff0f3;
+  border: 2px dashed #ff4d6d;
+  padding: 20px;
+  border-radius: 15px;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #d90429;
+}
+
+/* PIRINGAN HITAM VINYL */
+.vinyl-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.vinyl-disc-large {
+  width: 210px;
+  height: 210px;
+  background: radial-gradient(circle, #333 25%, #111 65%, #000 100%);
+  border-radius: 50%;
+  border: 5px solid #222;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  animation: spin 6s linear infinite;
+  animation-play-state: paused;
+}
+
+.vinyl-center {
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  border: 4px solid #111;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.vinyl-center img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.vinyl-center::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 14px;
+  background: #ffffff;
+  border: 2px solid #222;
+  border-radius: 50%;
+}
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+/* GALLERY & FILTER */
+.filter-wrap { display: flex; justify-content: center; gap: 8px; margin-bottom: 15px; flex-wrap: wrap; }
+.filter-btn { background: #f1f5f9; border: 2px solid #cbd5e1; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; cursor: pointer; }
+.filter-btn.active { background: #ff4d6d; color: white; border-color: #d90429; }
+
+.photo-gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; max-height: 420px; overflow-y: auto; padding-right: 5px; }
+.polaroid-card { background: #fff; padding: 10px; border-radius: 15px; border: 3px solid #ffb703; cursor: pointer; transition: transform 0.2s; }
+.polaroid-card:hover { transform: scale(1.03); }
+.polaroid-card img { width: 100%; height: 140px; object-fit: cover; border-radius: 10px; }
+.caption { font-family: 'Fredoka', cursive; font-size: 0.85rem; color: #7b2cbf; margin-top: 8px; text-align: center; }
+
+/* CHECKLIST & AMPLOP */
+.checklist-box { text-align: left; background: #fff9ed; border: 2px dashed #ffb703; padding: 20px; border-radius: 18px; margin-bottom: 20px; }
+.check-item { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-size: 0.95rem; }
+
+.envelope-card { background: #ffe5ec; border: 3px dashed #ff4d6d; padding: 30px; border-radius: 20px; cursor: pointer; }
+.envelope-icon { font-size: 4rem; }
+.envelope-text { font-family: 'Fredoka', cursive; color: #ff4d6d; margin-top: 10px; }
+
+.letter-paper { background: #fff0f3; border: 3px dashed #ff758f; padding: 20px; border-radius: 18px; text-align: justify; }
+.letter-text { font-size: 0.95rem; line-height: 1.7; color: #2d3748; }
+.letter-footer { text-align: right; margin-top: 15px; font-weight: 600; color: #d90429; }
+.letter-footer span { font-family: 'Caveat', cursive; font-size: 1.8rem; }
+
+.reply-box { margin-top: 20px; text-align: left; background: #fff; padding: 15px; border-radius: 12px; border: 2px solid #ff758f; }
+.reply-title { font-size: 0.85rem; font-weight: 600; color: #ff4d6d; margin-bottom: 5px; }
+.reply-box textarea { width: 100%; height: 70px; border: 1px solid #cbd5e1; border-radius: 8px; padding: 8px; font-size: 0.85rem; }
+
+/* MODAL */
+.modal { position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 100; display: flex; justify-content: center; align-items: center; padding: 15px; }
+.modal-content { background: white; border-radius: 20px; padding: 20px; max-width: 450px; width: 100%; text-align: center; position: relative; border: 4px solid #ff4d6d; }
+.close-modal { position: absolute; top: 10px; right: 15px; font-size: 1.8rem; cursor: pointer; color: #ff4d6d; }
+.modal-content img { width: 100%; max-height: 250px; object-fit: cover; border-radius: 12px; }
+.modal-title { font-family: 'Fredoka', cursive; color: #ff4d6d; margin-top: 12px; }
+.modal-desc { font-size: 0.9rem; color: #4a5568; margin: 10px 0 15px 0; text-align: justify; line-height: 1.5; }
+.modal-nav { display: flex; justify-content: space-between; margin-top: 15px; }
+.modal-nav button { background: #f1f5f9; border: none; padding: 8px 16px; border-radius: 12px; font-weight: 600; cursor: pointer; }
+.btn-like { background: #ff4d6d; color: white; border: none; padding: 8px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; }
+
+/* GENERAL BUTTONS */
+.btn-primary { background-color: #ffb703; color: white; border: 3px solid #d90429; padding: 12px; border-radius: 20px; font-family: 'Fredoka', cursive; cursor: pointer; width: 100%; }
+.btn-back { background: #7b2cbf; border-color: #5a189a; margin-top: 15px; }
+.btn-wa { background: #25d366; border-color: #1eb857; text-decoration: none; display: block; text-align: center; }
+
+@media (max-width: 500px) { .photo-gallery-grid { grid-template-columns: 1fr; } }
+@keyframes popIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+/* PEMUTAR VIDEO AGAR RAPI DALAM BINGKAI */
+.video-container {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 3px solid #ffb703;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  background: #000;
+  margin-top: 10px;
+}
+
+.video-container video {
+  width: 100%;
+  height: auto;
+  max-height: 320px;
+  display: block;
+  object-fit: contain;
+}
+
+/* TOMBOL MUSIK UTAMA DI POJOK KANAN ATAS */
+.main-music-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid #ff4d6d;
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-family: 'Fredoka', cursive;
+  font-size: 0.85rem;
+  color: #ff4d6d;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 77, 109, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: transform 0.2s ease;
+}
+
+.main-music-btn:hover {
+  transform: scale(1.05);
+}

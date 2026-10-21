@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2nd Month Anniversary for My Mboi ❤️</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Poppins:wght@400;500;600&family=Caveat:wght@700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <!-- PEMUTAR LAGU UTAMA WEB -->
+<audio id="main-bgm" loop>
+  <source src="music/bgm.mp3" type="audio/mpeg">
+</audio>
+
+<!-- TOMBOL MUSIK MELAYANG DI POJOK KANAN ATAS -->
+<div class="main-music-btn" onclick="toggleMainMusic()">
+  <span id="music-icon">🎵</span>
+  <span id="music-text">Putar Musik</span>
+</div>
+
+  <!-- PARTIKEL BUNGA TULIP MELAYANG -->
+  <div id="tulip-particles-container"></div>
+
+  <div class="main-container">
+
+    <!-- PAGE 1: UTAMA / TANYA -->
+    <section id="page-ask" class="card-section text-center">
+      <div class="tulip-header-icon">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C9.5 2 7.5 4 7.5 6.5C7.5 8.5 9 10.2 11 10.8V18C11 18.6 10.6 19 10 19C9.4 19 9 18.6 9 18V16C9 14.3 7.7 13 6 13C4.3 13 3 14.3 3 16C3 18.8 5.2 21 8 21H16C18.8 21 21 18.8 21 16C21 14.3 19.7 13 18 13C16.3 13 15 14.3 15 16V18C15 18.6 14.6 19 14 19C13.4 19 13 18.6 13 18V10.8C15 10.2 16.5 8.5 16.5 6.5C16.5 4 14.5 2 12 2Z" fill="#ff4d6d"/>
+          <path d="M12 4C13.4 4 14.5 5.1 14.5 6.5C14.5 7.9 13.4 9 12 9C10.6 9 9.5 7.9 9.5 6.5C9.5 5.1 10.6 4 12 4Z" fill="#ff85a1"/>
+        </svg>
+      </div>
+
+      <h1 class="main-title">My Notes for My Mboi 🌷</h1>
+      <h2 id="ask-text" class="ask-title">Happy 2nd Month Anniversary! ❤️</h2>
+      <p class="subtitle-intro">Web kecil ini aku buat dengan sepenuh hati, for u pacarku yang cantik, imut, lucu, gemas, dan paling berarti di hidup aku. ✨</p>
+
+      <div class="buttons-wrap">
+        <button id="btn-yes" class="btn-yes">Lanjut Buka Kado 🎁</button>
+        <button id="btn-no" class="btn-no">Biasa Aja 😜</button>
+      </div>
+    </section>
+
+    <!-- PAGE 2: HADIAH / GIFTS GRID (5 KADO SIMETRIS) -->
+    <section id="page-gifts" class="card-section text-center hidden">
+      <div class="toy-icon">🎉 🌷</div>
+      <h2 class="title">Happy 2 Months, Mboii! ❤️</h2>
+      <p class="subtitle">Buka kado-kado interaktif di bawah ini satu per satu yaa:</p>
+
+      <div class="gifts-grid">
+        <div class="gift-card" onclick="openGift('gift-memories')">
+          <div class="gift-box-icon">📸</div>
+          <p>GIFT 1</p>
+          <small>Galeri Kenangan</small>
+        </div>
+        <div class="gift-card" onclick="openGift('gift-checklist')">
+          <div class="gift-box-icon">☑️</div>
+          <p>GIFT 2</p>
+          <small>Our Love Checklist</small>
+        </div>
+        <div class="gift-card" onclick="openGift('gift-reasons')">
+          <div class="gift-box-icon">🌷</div>
+          <p>GIFT 3</p>
+          <small>Alasan Aku Sayang Kamu</small>
+        </div>
+        <div class="gift-card" onclick="openGift('gift-music')">
+          <div class="gift-box-icon">🎵</div>
+          <p>GIFT 4</p>
+          <small>Music & Video</small>
+        </div>
+        <div class="gift-card full-width-gift" onclick="openGiftWithFlowerExplosion('gift-letter')">
+          <div class="gift-box-icon">✉️</div>
+          <p>GIFT 5 (SPECIAL)</p>
+          <small>Surat Maaf & Ungkapan Hati 🌷</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- GIFT 1: GALERI FOTO INTERAKTIF -->
+    <section id="gift-memories" class="card-section hidden">
+      <h2 class="section-title text-center">Captured Memories 📸</h2>
+      <!-- REVISI TEKS DARI KAMU -->
+      <p class="subtitle text-center">Klik foto nya mboi buat liat rahasia cinta dan ungkapan aku..</p>
+
+      <div class="photo-gallery-grid" id="photo-grid">
+        <div class="polaroid-card photo-item" onclick="openPhotoModal(0)">
+          <img src="images/photo1.jpg" alt="Foto 1" onerror="this.src='https://via.placeholder.com/400x300/ff758f/ffffff?text=Momen+Pertama+Jalan'">
+          <p class="caption">Momen Pertama Jalan 🌷</p>
+        </div>
+        <div class="polaroid-card photo-item" onclick="openPhotoModal(1)">
+          <img src="images/photo2.jpg" alt="Foto 2" onerror="this.src='https://via.placeholder.com/400x300/70e000/10002b?text=First+Time+Pegangan+Tangan'">
+          <p class="caption">First Time Pegangan Tangan 🤝</p>
+        </div>
+        <div class="polaroid-card photo-item" onclick="openPhotoModal(2)">
+          <img src="images/photo3.jpg" alt="Foto 3" onerror="this.src='https://via.placeholder.com/400x300/ffb703/ffffff?text=First+Time+Photobooth'">
+          <p class="caption">First Time Photobooth Berdua 📸</p>
+        </div>
+        <div class="polaroid-card photo-item" onclick="openPhotoModal(3)">
+          <img src="images/photo4.jpg" alt="Foto 4" onerror="this.src='https://via.placeholder.com/400x300/7b2cbf/ffffff?text=Senyuman+Cantik+Kamu'">
+          <p class="caption">Senyuman Cantik Kamu ✨</p>
+        </div>
+        <div class="polaroid-card photo-item" onclick="openPhotoModal(4)">
+          <img src="images/photo5.jpg" alt="Foto 5" onerror="this.src='https://via.placeholder.com/400x300/d90429/ffffff?text=Momen+LDR'">
+          <p class="caption">Momen Aku Harus LDR Sama Kamu 🥺</p>
+        </div>
+        <div class="polaroid-card photo-item" onclick="openPhotoModal(5)">
+          <img src="images/photo6.jpg" alt="Foto 6" onerror="this.src='https://via.placeholder.com/400x300/38b000/ffffff?text=Pertama+Ngasih+Bunga'">
+          <p class="caption">Pertama Kali Ngasih Bunga 💐</p>
+        </div>
+      </div>
+
+      <button class="btn-primary btn-back" onclick="closeGift('gift-memories')">Kembali ➔</button>
+    </section>
+
+    <!-- GIFT 2: REVISI LOVE CHECKLIST -->
+    <section id="gift-checklist" class="card-section hidden">
+      <h2 class="section-title text-center">Our Love Checklist ☑️❤️</h2>
+      <p class="subtitle text-center">Hal-hal manis dalam perjalanan hubungan kita:</p>
+
+      <div class="checklist-box">
+        <label class="check-item">
+          <input type="checkbox" checked disabled>
+          <span>Ngelewatin dua bulan bersama kamu mboi ❤️</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" onchange="heartPulse()">
+          <span>Ke pwt dan pelukan sepuasnya 🫂</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" onchange="heartPulse()">
+          <span>Sayangin kamu lebih lagi di hari hari ku 🥰</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" onchange="heartPulse()">
+          <span>Bahagia terus di bulan selanjutnya dan selamanya ✨</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" onchange="heartPulse()">
+          <span>Ngeliat hasil usaha kita yang engga sia sia 💖</span>
+        </label>
+      </div>
+
+      <button class="btn-primary btn-back" onclick="closeGift('gift-checklist')">Kembali ➔</button>
+    </section>
+
+    <!-- GIFT 3: REVISI ALASAN AKU SAYANG KAMU -->
+    <section id="gift-reasons" class="card-section text-center hidden">
+      <h2 class="section-title">Alasan Aku Sayang Kamu 🌷</h2>
+      <p class="subtitle">Klik tombol di bawah untuk melihat alasan-alasan aku sayang sama kamu:</p>
+
+      <div class="reason-display-box">
+        <p id="reason-text">"Klik tombol di bawah yaa sayang... ❤️"</p>
+      </div>
+
+      <button onclick="getRandomReason()" class="btn-primary" style="margin-top: 15px;">🎲 Acak Alasan</button>
+      <button class="btn-primary btn-back" onclick="closeGift('gift-reasons')">Kembali ➔</button>
+    </section>
+
+    <!-- GIFT 4: MUSIC & VIDEO -->
+    <section id="gift-music" class="card-section text-center hidden">
+      <h2 class="section-title">Our Special Song & Video 🎵</h2>
+      <p class="subtitle">Lagu dan kenangan manis kita dalam piringan hitam:</p>
+
+      <div class="vinyl-container">
+        <div class="vinyl-disc-large" id="vinyl-disc">
+          <div class="vinyl-center">
+            <img src="images/photo1.jpg" alt="Song Cover" onerror="this.src='https://via.placeholder.com/100?text=Tulip'">
+          </div>
+        </div>
+        <div style="margin-top: 18px;">
+          <button id="btn-play-song" class="btn-primary" style="width: auto; padding: 12px 30px;">▶ Putar Lagu</button>
+        </div>
+        <audio id="custom-audio" src="music/bgm1.mp3"></audio>
+      </div>
+
+      <hr class="divider">
+
+      <div class="video-section">
+        <h3 class="sub-section-title">📹 Video Kenangan Kita</h3>
+        <div class="video-container">
+          <video controls poster="images/photo1.jpg">
+            <source src="videos/video.mp4" type="video/mp4">
+            Browser kamu tidak mendukung pemutar video.
+          </video>
+        </div>
+      </div>
+
+      <div class="lyrics-section">
+        <h3 class="sub-section-title">📜 tontonnya sampe abis yaa...</h3>
+        <div class="lyrics-box" id="lyrics-container">
+          <p class="lyric-line" data-time="0">You've got a friend in me mboii...</p>
+          <p class="lyric-line" data-time="4">Aku bersyukur banget punya kamu...</p>
+          <p class="lyric-line" data-time="8">ini 2 bulan yang manis dan penuh arti buat aku</p>
+          <p class="lyric-line" data-time="12">Makasih yaa udah sayang sama aku</p>
+          <p class="lyric-line" data-time="16">To infinity and beyond, Mboii! love u so much ❤️</p>
+        </div>
+      </div>
+
+      <button class="btn-primary btn-back" onclick="closeGift('gift-music')">Kembali ➔</button>
+    </section>
+
+    <!-- GIFT 5: REVISI SURAT MAAF & UNGKAPAN HATI -->
+    <section id="gift-letter" class="card-section text-center hidden">
+      <div class="tulip-burst-header">🌷✨</div>
+      <h2 class="letter-title">Surat Maaf & Ungkapan Hati 🌷</h2>
+
+      <div id="envelope-card" class="envelope-card" onclick="openEnvelope()">
+        <div class="envelope-icon">✉️</div>
+        <p class="envelope-text">Klik Amplop Ini Untuk Buka Suratnya ❤️</p>
+      </div>
+      
+      <div id="letter-content" class="letter-paper hidden">
+        <p class="letter-text">
+          happy 2nd month anivv sayangku mboi 🫂<br><br>
+          sebelumnya, aku mau minta maaf dari hati aku yang paling dalem kalo selama dua bulan ini banyak hal yang bikin kamu cape , lelah , dan kecewa , aku sadar sikap aku masih belum sempurna sayang... , maaf terkadang aku belum bisa jadi pacar yang peka atau kadang engga ngertiin... , tapi aku bakal selalu berusaha biar aku dan kita lebih baik kedepannya sayang... i lovee uu somuch..my mboi may soul may world 🫀💖✨<br><br>
+          banyak banget sebenernya yang mau aku ungkapin ke kamu. makasih banyak sayangku udah selalu mau bertahan , sabar, dan selalu ada disini buat aku.., dua bulan ini ada banyak hal indah banyak mimpi banyak tawa dan sedih juga, aku mau kamu tau kamu itu bener bener seseorang yang bikin hari aku jadi lebih baik , jadi lebih berwarna dan ceria lagi.. kamu bener bener rubah hidup aku sayang. kamu orang yang mau aku bawa kemana pun aku pergi , mau aku bawa bahagia sama sama aku, orang yang mau aku banggain didepan semua orang... , sayang percayalah kamu udah bener bener jadi dunia aku sekarang dan aku mau itu terus terjadi 💕💝<br><br>
+          aku janjiii akaann selaluu berusaha dan kerja kerass biar jadi yang terbaik buatt kamu sayanggkuu mboii. aku harap kita selamanya 😓🫂
+        </p>
+        <p class="letter-footer">With all my love,<br><span>Pacarmu ❤️</span></p>
+
+        <div class="reply-box">
+          <p class="reply-title">Pesan Singkat Buat Aku (Mboi can type here):</p>
+          <textarea id="mboi-reply" placeholder="Tulis balasan atau perasaan kamu di sini ya sayang..."></textarea>
+          <button onclick="sendReplyWA()" class="btn-primary btn-wa" style="margin-top:8px;">Kirim Balasan via WhatsApp 📲</button>
+        </div>
+      </div>
+
+      <hr class="divider">
+      <button class="btn-primary btn-back" onclick="closeGift('gift-letter')">Kembali ➔</button>
+    </section>
+
+  </div>
+
+  <!-- POPUP MODAL FOTO -->
+  <div id="photo-modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closePhotoModal()">&times;</span>
+      <img id="modal-img" src="" alt="Foto Momen">
+      <h3 id="modal-title" class="modal-title"></h3>
+      <p id="modal-desc" class="modal-desc"></p>
+      
+      <div class="modal-actions">
+        <button class="btn-like" onclick="giveHeart()">BERI HEART ❤️ (<span id="heart-count">0</span>)</button>
+      </div>
+
+      <div class="modal-nav">
+        <button onclick="changePhotoModal(-1)">❮ Prev</button>
+        <button onclick="changePhotoModal(1)">Next ❯</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
